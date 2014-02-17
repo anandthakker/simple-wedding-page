@@ -1,0 +1,283 @@
+@import "compass/css3";
+@import "compass/typography/lists";
+@import "compass/typography/links";
+
+// http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+html {
+  font-size: 125%;
+}
+
+body, select, input, textarea {
+  color: $font-color;
+  // Set your base font here, to apply evenly
+  font-family: $font-family;
+}
+
+body {
+  background-color: $background-color;
+}
+
+p {
+  margin: ($line-height * 1rem) 0;
+}
+
+button,h1,h2,h3,h4,h5,h6 {
+  font-family: $display-font-family;
+}
+
+h1 {
+  margin-top: 0px;
+  padding-top: 1em;
+  text-align: center;
+  font-size: 2.5em;
+  @include text-shadow(0px 1px 2px #fff, 0px -1px 2px darken($background-color, 5%));
+}
+
+h2 {
+  line-height: 1;
+  margin: ($line-height*2rem) 0 ($line-height*1rem) 0;
+}
+
+
+a {
+  @include link-colors($link-color, $link-hover-color);
+}
+
+button {
+  background: none;
+  border: 1px solid;
+}
+
+
+/**
+* Buttons
+*/
+
+button, .button {
+  font-family: $display-font-family;
+  padding: .5em 1em;
+  border: 1px solid black;
+  @include border-radius(2px);
+  &:hover, &.selected {
+    background-color: $inverse-background-color;
+    color: $inverse-font-color;
+  }
+}
+
+a.button, .button a {
+  @include link-colors($font-color, $inverse-font-color);
+  text-decoration: none;
+}
+
+.selected a {
+  text-decoration: underline;
+  @include link-colors($inverse-font-color, $inverse-font-hover-color);
+}
+
+
+/**
+* Card
+*/
+
+.card {
+  padding: 1rem .5rem;
+  margin: 0 -.5em;
+
+  @include box-shadow(#aaa 1px 1px 1px 1px);
+}
+
+
+/**
+* Photos
+*/
+
+.photo {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  margin-bottom: 1em;
+}
+
+.photo-strip {
+
+  @include no-bullets;
+  margin: 0px;
+  padding: 0px;
+
+
+  li {
+    @include box-sizing(content-box);
+    float: left;
+    width: 33%;
+    padding-left: .5%;
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+
+  @include clearfix;
+}
+
+
+
+/**
+* Forms
+*/
+.message {
+  padding: .5em;
+  margin: 1em 0;
+}
+
+.error {
+  background-color: #fdd;
+  border-color: #f00;
+  border-width: 1px 0;
+  border-style: solid none;
+}
+
+
+
+/**
+* RSVP Forms
+*/
+
+.rsvp-button {
+  @extend .card;
+  display: block;
+  border: 0px;
+  width: 100%;
+  margin: 1em 0;
+
+  @include transform(perspective( 600px ));
+
+  @include transition-property(transform);
+  @include transition-duration(.1s);
+
+  &:hover {
+    @include transform(perspective( 600px ) translateZ(5px));
+    @include box-shadow(#aaa 4px 4px 10px 1px);
+    @include transition-property(transform);
+    @include transition-duration(.25s);
+  }
+}
+
+
+.rsvp {
+  @extend .card;
+
+  margin-top: 1em;
+
+  font-family: $display-font-family;
+
+  h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  form {
+    font-size: .75em;
+  }
+
+  label {
+    display: block;
+    input[type="text"] {
+      width: 100%;
+    }
+  }
+
+  .form-question {
+    margin-bottom: 1em;
+  }
+
+  button {
+    float: right;
+  }
+
+  @include clearfix;
+}
+
+
+
+/***
+* Page layout stuff.
+*/
+
+nav {
+  ul {
+    @include horizontal-list;
+
+    font-size: .75em;
+
+    background-color: $background-color;
+    opacity: .8;
+
+    margin: 0px;
+    padding: 0px;
+
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+
+  li {
+    @extend .button;
+    border: none;
+    width: 25%;
+    padding: ($font-size * ($line-height - 1) / 2) 2px;
+  }
+
+  // make the whole tab a link.
+  a {
+    display: block;
+    text-align: center;
+  }
+
+  .exit-only {
+    display: none;
+  }
+}
+
+nav.stuck {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  ul {
+    border-top: none;
+  }
+}
+
+#container {
+  max-width: 34em;
+  padding: 0 .5em;
+  margin: auto;
+}
+
+#container>header {
+  margin: 0 -.5em;
+}
+
+
+#container>section {
+}
+
+#registry .cta {
+  text-align: right;
+}
+
+#container>footer {
+  border-top: 1px solid black;
+  margin-top: 4rem;
+  font-size: .5rem;
+  text-align: right;
+
+}

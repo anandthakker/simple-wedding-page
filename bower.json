@@ -1,0 +1,18 @@
+{
+  "name": "athreadofsomething",
+  "main": "public/js/script.js",
+  "version": "0.0.0",
+  "authors": [
+    "Anand Thakker"
+  ],
+  "license": "MIT",
+  "homepage": "anandthakker.net",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

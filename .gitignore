@@ -1,4 +1,6 @@
 .sass-cache
+bower_components
+
 lib-cov
 *.seed
 *.log

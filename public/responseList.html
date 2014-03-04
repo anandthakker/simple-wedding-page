@@ -1,0 +1,23 @@
+
+<h1>{{loc}} reception</h1>
+
+<button ng-click="hideNotAttending = !hideNotAttending">
+  {{hideNotAttending ? "Show All Responses" : "Show Only Those Attending"}}
+</button>
+
+<table class="rsvp-responses">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Attending?</th>
+      <th>Number of Guests</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-hide="hideNotAttending && !response.attending" ng-repeat="response in responses | orderByPriority">
+      <td>{{response.name}}</td>
+      <td>{{response.attending ? "Yes" : "No" }}</td>
+      <td>{{response.number}}</td>
+    </tr>
+  </tbody>
+</table>

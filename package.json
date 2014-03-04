@@ -1,0 +1,20 @@
+{
+  "name": "simple-wedding-page",
+  "version": "0.0.2",
+  "homepage": "http://athreadofsomething.com",
+  "licenses": {
+    "type": "MIT",
+    "url": "https://raw.github.com/anandthakker/simple-wedding-page/master/LICENSE"
+  },
+  "bugs": "https://github.com/anandthakker/simple-wedding-page/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:anandthakker/simple-wedding-page.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "coffee-script": "~1.6.3",
+    "optimist": "~0.6.1",
+    "express": "~3.4.8"
+  }
+}

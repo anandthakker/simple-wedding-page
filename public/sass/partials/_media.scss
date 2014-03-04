@@ -13,8 +13,17 @@
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 900px) {
   /* Style adjustments for viewports 768px and over go here */
+
+  #receptions>section {
+    width: 50%;
+    float: left;
+  }
+
+  #receptions .subhead {
+    display: block;
+  }
 
 }
 
@@ -22,10 +31,7 @@
 /**
 *  Column logic.
 */
-@media only screen and (min-width: 40rem) {
-  .rsvp,.rsvp-button {
-    width: 50%;
-  }
+@media only screen and (min-width: 35rem) {
   #container {
     max-width: 60rem;
   }

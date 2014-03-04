@@ -68,6 +68,13 @@ button, .button {
   }
 }
 
+button[disabled="disabled"] {
+  border-color: #ddd;
+  background-color: $background-color;
+  color: #ddd;
+} 
+
+
 a.button, .button a {
   @include link-colors($font-color, $inverse-font-color);
   text-decoration: none;
@@ -85,7 +92,6 @@ a.button, .button a {
 
 .card {
   padding: 1rem .5rem;
-  margin: 0 -.5em;
 
   @include box-shadow(#aaa 1px 1px 1px 1px);
 }
@@ -149,11 +155,22 @@ a.button, .button a {
 * RSVP Forms
 */
 
+#receptions {
+  @include pie-clearfix;
+  .button {
+    display: inline-block;
+    padding: .25em .5em;
+  }
+  .subhead {
+    display: inline;
+  }
+}
+
 .rsvp-button {
   @extend .card;
   display: block;
+  width: 75%;
   border: 0px;
-  width: 100%;
   margin: 1em 0;
 
   @include transform(perspective( 600px ));
@@ -172,6 +189,7 @@ a.button, .button a {
 
 .rsvp {
   @extend .card;
+  width: 75%;
 
   margin-top: 1em;
 
@@ -190,9 +208,15 @@ a.button, .button a {
 
   label {
     display: block;
-    input[type="text"] {
-      width: 100%;
-    }
+  }
+
+  input[type="text"] {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+  }
+  input.ng-invalid.ng-dirty {
+    @extend .error;
   }
 
   .form-question {
@@ -207,6 +231,20 @@ a.button, .button a {
 }
 
 
+/**
+* Responses list
+*/
+
+.rsvp-responses {
+  margin-top: 1em;
+  width: 100%;
+
+  th {
+    width: 33%;
+    text-align: left;
+  }
+
+}
 
 /***
 * Page layout stuff.

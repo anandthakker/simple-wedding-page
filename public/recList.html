@@ -1,0 +1,19 @@
+
+<h1>Recommendations</h1>
+
+<table class="recommendation-responses">
+  <thead>
+    <tr>
+      <th class="name">From</th>
+      <th class="recommendation">Recommendation</th>
+      <th class="comments">Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="rec in recommendations | orderByPriority">
+      <td>{{rec.name}}</td>
+      <td>{{rec.recommendation}}</td>
+      <td>{{rec.comments}}</td>
+    </tr>
+  </tbody>
+</table>

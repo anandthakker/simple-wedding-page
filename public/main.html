@@ -83,6 +83,41 @@
       books and music. Please let us know who your favorite artists and authors are, whether they’re
       little-known gems or guilty pleasures.
     </p>
+    <div class="recommendations" ng-controller="RecCtrl">
+      <button ng-click="recommending = true" ng-hide="recommending">Recommend Something</button>
+      <form class="recommend" name="recForm" ng-show="recommending" 
+        firebase-form 
+        firebase-form-data="recommendation" 
+        firebase-url="https://athreadofsomething.firebaseio.com/recommendations"
+        waiting-msg="Sending your response..." 
+        success-msg="Got your recommendation for '{{recommendation.recommendation}}' - thanks!" 
+        error-msg="Shoot! Sorry. Something went wrong.  Please either reload the page and try again, or just email Jenn/Anand.">
+
+        <h3>
+          Recommend some reading or music
+        </h3>
+        <div class="form-question">
+          <label>Name(s)
+            <input name="names" type="text" ng-model="recommendation.name" required autofocus>
+          </label>
+        </div>
+
+        <div class="form-question">
+          <label>Title &amp; Author/Artist
+            <input name="recommendation" type="text" ng-model="recommendation.recommendation" required>
+          </label>
+        </div>
+
+        <div class="form-question">
+          <label>Comments
+            <textarea name="comments" type="text" ng-model="recommendation.comments">
+            </textarea>
+          </label>
+        </div>
+        <button ng-disabled="recForm.$invalid" ng-click="save()">Send Now&#8594;</button>
+      </form>
+      <button ng-click="recommending = true; success = false; recommendation = {};" ng-hide="!success">Recommend Another?</button>
+    </div>
   </div>
 </section>
 
@@ -159,7 +194,7 @@
     <div ng-show="showRsvp.nc">
       <button class="rsvp-button" ng-click="responding = true" ng-hide="responding">RSVP to North Carolina Reception</button>
 
-      <form class="rsvp" ng-show="responding" firebase-form firebase-form-data="rsvp" firebase-url="https://athreadofsomething.firebaseio.com/rsvp/nc"
+      <form class="rsvp" name="ncForm" ng-show="responding" firebase-form firebase-form-data="rsvp" firebase-url="https://athreadofsomething.firebaseio.com/rsvp/nc"
       waiting-msg="Sending your response..." success-msg="Thanks--we've received your RSVP!" error-msg="Uh oh! Something went wrong.  Please either try again or contact Maggie and Ping Eng.">
 
         <h3>
@@ -167,7 +202,7 @@
         </h3>
         <div class="form-question">
           <label>Name(s)
-            <input name="names" type="text" ng-model="rsvp.name">
+            <input name="names" type="text" ng-model="rsvp.name" required autofocus>
           </label>
         </div>
 
@@ -185,7 +220,7 @@
             <input name="number" type="text" ng-model="rsvp.number">
           </label>
         </div>
-        <button ng-click="save()">Send RSVP Now&#8594;</button>
+        <button ng-disabled="ncForm.$invalid" ng-click="save()">Send RSVP Now&#8594;</button>
       </form>
     </div>
   </section>

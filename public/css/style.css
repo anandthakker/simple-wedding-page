@@ -422,7 +422,7 @@ body, select, input, textarea {
 }
 
 /* line 20, ../sass/partials/_page.scss */
-body {
+body, input, textarea {
   background-color: #fdfdff;
 }
 
@@ -571,23 +571,51 @@ a.button:hover, .button a:hover, nav li a:hover {
 * Forms
 */
 /* line 140, ../sass/partials/_page.scss */
+textarea {
+  width: 100%;
+}
+
+/* line 144, ../sass/partials/_page.scss */
 .message {
   padding: .5em;
   margin: 1em 0;
 }
 
-/* line 145, ../sass/partials/_page.scss */
-.error, .rsvp input.ng-invalid.ng-dirty {
+/* line 149, ../sass/partials/_page.scss */
+.success {
+  border: 1px solid #0000dd;
+  background-color: rgba(0, 0, 221, 0.05);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+
+/* line 155, ../sass/partials/_page.scss */
+.error, input.ng-invalid.ng-dirty {
   background-color: #fdd;
   border-color: #f00;
   border-width: 1px 0;
   border-style: solid none;
 }
 
+/* line 162, ../sass/partials/_page.scss */
+.form-question {
+  margin-bottom: 1em;
+}
+
+/* line 166, ../sass/partials/_page.scss */
+input[type="text"] {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
 /**
 * RSVP Forms
 */
-/* line 158, ../sass/partials/_page.scss */
+/* line 180, ../sass/partials/_page.scss */
 #receptions {
   *zoom: 1;
 }
@@ -597,17 +625,17 @@ a.button:hover, .button a:hover, nav li a:hover {
   display: table;
   clear: both;
 }
-/* line 160, ../sass/partials/_page.scss */
+/* line 182, ../sass/partials/_page.scss */
 #receptions .button, #receptions nav li, nav #receptions li {
   display: inline-block;
   padding: .25em .5em;
 }
-/* line 164, ../sass/partials/_page.scss */
+/* line 186, ../sass/partials/_page.scss */
 #receptions .subhead {
   display: inline;
 }
 
-/* line 169, ../sass/partials/_page.scss */
+/* line 191, ../sass/partials/_page.scss */
 .rsvp-button {
   display: block;
   width: 75%;
@@ -627,7 +655,7 @@ a.button:hover, .button a:hover, nav li a:hover {
   -o-transition-duration: 0.1s;
   transition-duration: 0.1s;
 }
-/* line 181, ../sass/partials/_page.scss */
+/* line 203, ../sass/partials/_page.scss */
 .rsvp-button:hover {
   -webkit-transform: perspective(600px) translateZ(5px);
   -moz-transform: perspective(600px) translateZ(5px);
@@ -647,7 +675,7 @@ a.button:hover, .button a:hover, nav li a:hover {
   transition-duration: 0.25s;
 }
 
-/* line 190, ../sass/partials/_page.scss */
+/* line 212, ../sass/partials/_page.scss */
 .rsvp {
   width: 75%;
   margin-top: 1em;
@@ -655,54 +683,65 @@ a.button:hover, .button a:hover, nav li a:hover {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 198, ../sass/partials/_page.scss */
+/* line 220, ../sass/partials/_page.scss */
 .rsvp h3 {
   font-size: 1rem;
   margin-top: 0;
   font-weight: normal;
   text-align: center;
 }
-/* line 205, ../sass/partials/_page.scss */
+/* line 227, ../sass/partials/_page.scss */
 .rsvp form {
   font-size: .75em;
 }
-/* line 209, ../sass/partials/_page.scss */
+/* line 231, ../sass/partials/_page.scss */
 .rsvp label {
   display: block;
 }
-/* line 213, ../sass/partials/_page.scss */
-.rsvp input[type="text"] {
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid black;
-}
-/* line 222, ../sass/partials/_page.scss */
-.rsvp .form-question {
-  margin-bottom: 1em;
-}
-/* line 226, ../sass/partials/_page.scss */
+/* line 235, ../sass/partials/_page.scss */
 .rsvp button {
   float: right;
 }
 
 /**
-* Responses list
+* RSVP Responses list
 */
-/* line 238, ../sass/partials/_page.scss */
+/* line 247, ../sass/partials/_page.scss */
 .rsvp-responses {
   margin-top: 1em;
   width: 100%;
 }
-/* line 242, ../sass/partials/_page.scss */
+/* line 251, ../sass/partials/_page.scss */
 .rsvp-responses th {
   width: 33%;
   text-align: left;
 }
 
+/**
+* Recommendations List
+*/
+/* line 261, ../sass/partials/_page.scss */
+.recommendation-responses {
+  margin-top: 1em;
+  width: 100%;
+}
+/* line 266, ../sass/partials/_page.scss */
+.recommendation-responses th.name {
+  width: 20%;
+}
+/* line 269, ../sass/partials/_page.scss */
+.recommendation-responses th.recommendation {
+  width: 40%;
+}
+/* line 272, ../sass/partials/_page.scss */
+.recommendation-responses th.comments {
+  width: 40%;
+}
+
 /***
 * Page layout stuff.
 */
-/* line 254, ../sass/partials/_page.scss */
+/* line 284, ../sass/partials/_page.scss */
 nav ul {
   margin: 0;
   padding: 0;
@@ -740,52 +779,52 @@ nav ul li:last-child {
 nav ul li.last {
   padding-right: 0;
 }
-/* line 269, ../sass/partials/_page.scss */
+/* line 299, ../sass/partials/_page.scss */
 nav li {
   border: none;
   width: 25%;
   padding: 0.25em 2px;
 }
-/* line 277, ../sass/partials/_page.scss */
+/* line 307, ../sass/partials/_page.scss */
 nav a {
   display: block;
   text-align: center;
 }
-/* line 282, ../sass/partials/_page.scss */
+/* line 312, ../sass/partials/_page.scss */
 nav .exit-only {
   display: none;
 }
 
-/* line 287, ../sass/partials/_page.scss */
+/* line 317, ../sass/partials/_page.scss */
 nav.stuck {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
 }
-/* line 292, ../sass/partials/_page.scss */
+/* line 322, ../sass/partials/_page.scss */
 nav.stuck ul {
   border-top: none;
 }
 
-/* line 297, ../sass/partials/_page.scss */
+/* line 327, ../sass/partials/_page.scss */
 #container {
   max-width: 34em;
   padding: 0 .5em;
   margin: auto;
 }
 
-/* line 303, ../sass/partials/_page.scss */
+/* line 333, ../sass/partials/_page.scss */
 #container > header {
   margin: 0 -.5em;
 }
 
-/* line 311, ../sass/partials/_page.scss */
+/* line 341, ../sass/partials/_page.scss */
 #registry .cta {
   text-align: right;
 }
 
-/* line 315, ../sass/partials/_page.scss */
+/* line 345, ../sass/partials/_page.scss */
 #container > footer {
   border-top: 1px solid black;
   margin-top: 4rem;

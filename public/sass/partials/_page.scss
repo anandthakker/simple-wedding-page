@@ -17,7 +17,7 @@ body, select, input, textarea {
   font-family: $font-family;
 }
 
-body {
+body, input, textarea {
   background-color: $background-color;
 }
 
@@ -137,9 +137,19 @@ a.button, .button a {
 /**
 * Forms
 */
+textarea {
+  width: 100%;
+}
+
 .message {
   padding: .5em;
   margin: 1em 0;
+}
+
+.success {
+  border: 1px solid $link-hover-color;
+  background-color: rgba($link-hover-color, .05);
+  @include border-radius(2px);
 }
 
 .error {
@@ -149,6 +159,18 @@ a.button, .button a {
   border-style: solid none;
 }
 
+.form-question {
+  margin-bottom: 1em;
+}
+
+input[type="text"] {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid black;
+}
+input.ng-invalid.ng-dirty {
+  @extend .error;
+}
 
 
 /**
@@ -210,19 +232,6 @@ a.button, .button a {
     display: block;
   }
 
-  input[type="text"] {
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid black;
-  }
-  input.ng-invalid.ng-dirty {
-    @extend .error;
-  }
-
-  .form-question {
-    margin-bottom: 1em;
-  }
-
   button {
     float: right;
   }
@@ -232,7 +241,7 @@ a.button, .button a {
 
 
 /**
-* Responses list
+* RSVP Responses list
 */
 
 .rsvp-responses {
@@ -242,6 +251,27 @@ a.button, .button a {
   th {
     width: 33%;
     text-align: left;
+  }
+}
+
+/**
+* Recommendations List
+*/
+
+.recommendation-responses {
+  margin-top: 1em;
+  width: 100%;
+
+  th {
+    &.name {
+      width: 20%;
+    }
+    &.recommendation {
+      width: 40%;
+    }
+    &.comments {
+      width: 40%;
+    }
   }
 
 }

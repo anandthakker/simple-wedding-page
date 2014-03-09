@@ -4,11 +4,16 @@
     return $routeProvider.when('/rsvp-responses/:loc', {
       templateUrl: "responseList.html",
       controller: "RsvpListCtrl"
+    }).when('/recommendations', {
+      templateUrl: 'recList.html',
+      controller: 'RecListCtrl'
     }).when('/:scrollTo', {
       templateUrl: "main.html"
     }).otherwise({
       templateUrl: "main.html"
     });
+  }).controller("RecCtrl", function($scope) {
+    return $scope.recommendation = {};
   }).controller("RsvpCtrl", function($scope) {
     var ref;
     $scope.rsvp = {
@@ -25,33 +30,38 @@
     ref = new Firebase("https://athreadofsomething.firebaseio.com/rsvp/" + $routeParams.loc);
     $scope.responses = $firebase(ref);
     return $scope.loc = $routeParams.loc;
-  }).directive("firebaseForm", function($firebase) {
+  }).controller("RecListCtrl", function($scope, $firebase) {
+    var ref;
+    ref = new Firebase("https://athreadofsomething.firebaseio.com/recommendations");
+    return $scope.recommendations = $firebase(ref);
+  }).directive("firebaseForm", function($firebase, $interpolate) {
     return {
       restrict: "A",
       replace: true,
       transclude: true,
       template: "<div class=\"firebase-form\">\n  <div class=\"message error\" ng-show=\"error\">\n    {{errorMsg}}\n  </div>\n\n  <form ng-show=\"error || (!success && !saving)\" ng-transclude>\n  </form>\n\n  <div class=\"message waiting\" ng-show=\"saving\">\n    {{waitingMsg}}\n  </div>\n  <div class=\"message success\" ng-show=\"success\">\n    {{successMsg}}\n  </div>\n\n</div>\n",
       link: function(scope, element, attrs) {
-        var db, _ref, _ref1, _ref2;
+        var db;
         db = new Firebase(attrs.firebaseUrl);
-        scope.waitingMsg = (_ref = attrs.waitingMsg) != null ? _ref : "Saving...";
-        scope.successMsg = (_ref1 = attrs.successMsg) != null ? _ref1 : "Thank you. Your response has been saved.";
-        scope.errorMsg = (_ref2 = attrs.errorMsg) != null ? _ref2 : "There was a problem saving your response.";
         scope.saving = null;
         scope.success = null;
         scope.error = null;
         return scope.save = function() {
-          var data, newRef;
-          data = scope.$eval(attrs.firebaseFormData);
+          var data, newRef, _ref;
           scope.saving = true;
+          scope.waitingMsg = $interpolate((_ref = attrs.waitingMsg) != null ? _ref : "Saving...")(scope);
+          data = scope.$eval(attrs.firebaseFormData);
           newRef = db.push();
           return newRef.set(data, function(error) {
             return scope.$apply(function() {
+              var _ref1, _ref2;
               scope.saving = false;
               if (error != null) {
-                return scope.error = error;
+                scope.error = error;
+                return scope.errorMsg = $interpolate((_ref1 = attrs.errorMsg) != null ? _ref1 : "There was a problem saving your response.")(scope);
               } else {
-                return scope.success = true;
+                scope.success = true;
+                return scope.successMsg = $interpolate((_ref2 = attrs.successMsg) != null ? _ref2 : "Thank you. Your response has been saved.")(scope);
               }
             });
           });
@@ -75,8 +85,6 @@
           $('#container>section').waypoint({
             handler: function(direction) {
               var active_listItem, active_section;
-              console.log($(this).attr("id"));
-              console.log(direction);
               active_section = void 0;
               active_section = $(this);
               if (direction === "up") {

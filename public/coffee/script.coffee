@@ -7,12 +7,18 @@ angular.module("athreadofsomething",[
     templateUrl: "responseList.html"
     controller: "RsvpListCtrl"
 
+  .when '/recommendations',
+    templateUrl: 'recList.html'
+    controller: 'RecListCtrl'
+
   .when '/:scrollTo',
     templateUrl: "main.html"
 
   .otherwise
     templateUrl: "main.html"
 
+).controller("RecCtrl", ($scope)->
+  $scope.recommendation = {}
 ).controller("RsvpCtrl", ($scope)->
   $scope.rsvp =
     attending: true
@@ -27,7 +33,10 @@ angular.module("athreadofsomething",[
   $scope.responses = $firebase(ref)
   $scope.loc = $routeParams.loc
 
-).directive("firebaseForm", ($firebase)->
+).controller("RecListCtrl", ($scope, $firebase)->
+  ref = new Firebase("https://athreadofsomething.firebaseio.com/recommendations")
+  $scope.recommendations = $firebase(ref)
+).directive("firebaseForm", ($firebase, $interpolate)->
 
   restrict: "A"
   replace: true
@@ -58,25 +67,24 @@ angular.module("athreadofsomething",[
 
     db = new Firebase(attrs.firebaseUrl)
 
-    scope.waitingMsg = attrs.waitingMsg ? "Saving..."
-    scope.successMsg = attrs.successMsg ? "Thank you. Your response has been saved."
-    scope.errorMsg = attrs.errorMsg ? "There was a problem saving your response."
-
     scope.saving = null
     scope.success = null
     scope.error = null
 
-
     scope.save = ()->
-      data = scope.$eval(attrs.firebaseFormData)
       scope.saving = true
+      scope.waitingMsg = $interpolate(attrs.waitingMsg ? "Saving...")(scope)
+
+      data = scope.$eval(attrs.firebaseFormData)
       newRef = db.push()
       newRef.set(data, (error) -> scope.$apply () ->
         scope.saving = false
         if error?
           scope.error = error
+          scope.errorMsg = $interpolate(attrs.errorMsg ? "There was a problem saving your response.")(scope)
         else
           scope.success = true
+          scope.successMsg = $interpolate(attrs.successMsg ? "Thank you. Your response has been saved.")(scope)
       )
 ).directive("stickyNav", ()->
   # This is super quick and dirty -- obviously would be better to make this a generalizable
@@ -95,8 +103,6 @@ angular.module("athreadofsomething",[
 
       $('#container>section').waypoint
         handler: (direction) ->
-          console.log $(this).attr("id")
-          console.log direction
           active_section = undefined
           active_section = $(this)
           active_section = active_section.prev()  if direction is "up"

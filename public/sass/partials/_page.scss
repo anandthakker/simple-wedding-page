@@ -8,7 +8,7 @@
  }
 
 html {
-  font-size: 125%;
+  font-size: 20px;
 }
 
 body, select, input, textarea {
@@ -72,7 +72,7 @@ button[disabled="disabled"] {
   border-color: #ddd;
   background-color: $background-color;
   color: #ddd;
-} 
+}
 
 
 a.button, .button a {
@@ -86,15 +86,6 @@ a.button, .button a {
 }
 
 
-/**
-* Card
-*/
-
-.card {
-  padding: 1rem .5rem;
-
-  @include box-shadow(#aaa 1px 1px 1px 1px);
-}
 
 
 /**
@@ -168,6 +159,14 @@ input[type="text"] {
   border: none;
   border-bottom: 1px solid black;
 }
+
+input[type="number"] {
+  width: 15%;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+
 input.ng-invalid.ng-dirty {
   @extend .error;
 }
@@ -188,20 +187,35 @@ input.ng-invalid.ng-dirty {
   }
 }
 
+%rsvpcard {
+  padding: 1rem .5rem;
+
+  @include box-shadow(#aaa 1px 1px 1px 1px);
+
+  @media (min-width: 30em) {
+    width: 75%;
+  }
+
+  margin: 1em auto;
+  @media (min-width: 75em) {
+    margin: 1em 0;
+  }
+}
+
 .rsvp-button {
-  @extend .card;
+  @extend %rsvpcard;
   display: block;
-  width: 75%;
+
   border: 0px;
-  margin: 1em 0;
 
   @include transform(perspective( 600px ));
 
   @include transition-property(transform);
-  @include transition-duration(.1s);
+  @include transition-duration(.3s);
+  @include transition-timing-function(ease-in-out);
 
   &:hover {
-    @include transform(perspective( 600px ) translateZ(5px));
+    @include transform(perspective( 600px ) translateZ(4px));
     @include box-shadow(#aaa 4px 4px 10px 1px);
     @include transition-property(transform);
     @include transition-duration(.25s);
@@ -210,10 +224,14 @@ input.ng-invalid.ng-dirty {
 
 
 .rsvp {
-  @extend .card;
-  width: 75%;
-
-  margin-top: 1em;
+  @extend %rsvpcard;
+  @media (min-width: 30em) {
+    width: 75%;
+  }
+  margin: 1em auto;
+  @media (min-width: 75em) {
+    margin: 1em 0;
+  }
 
   font-family: $display-font-family;
 
@@ -330,8 +348,73 @@ nav.stuck {
   margin: auto;
 }
 
+#receptions {
+
+
+
+  @media (min-width: 30em) and (max-width: 74.9em) {
+    &>section {
+      clear: both;
+      @include pie-clearfix;
+    }
+    .details {
+      float: left;
+    }
+    a.map {
+      float: right;
+    }
+    .rsvp-wrapper {
+      clear: both;
+      &:before {
+        content: "\00a0";
+        height: 0;
+        display: block;
+        overflow: hidden;
+      }
+    }
+  }
+
+}
+
+@media only screen and (min-width: 75em) {
+  #container {
+    max-width: 60rem;
+  }
+
+  .narrative {
+
+    p:first-child {
+      margin-top: 0;
+    }
+
+    &>div {
+      @include column-count(2);
+    }
+  }
+
+  #receptions {
+
+    &>section {
+      width: 50%;
+      float: left;
+    }
+
+    .subhead {
+      display: block;
+    }
+  }
+}
+
+
 #container>header {
   margin: 0 -.5em;
+}
+
+@media only screen and (min-width: 30em) {
+  // go from full bleed mode (mobile) to aligned composition (tablet & above)
+  #container>header {
+    margin: 0 0;
+  }
 }
 
 
@@ -347,5 +430,13 @@ nav.stuck {
   margin-top: 4rem;
   font-size: .5rem;
   text-align: right;
+}
 
+@media (min-width: 30em) {
+  .copy {
+    float: left;
+  }
+  .attribution {
+    float: left;
+  }
 }

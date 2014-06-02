@@ -29,12 +29,6 @@
       <img src="images/chair-strip-1.png" alt="Photo of Jenn and Anand">
     </li>
   </ul>
-
-
-
-
-  <!--        <img src="images/chair2.png" alt="Photo of Jenn and Anand" class="photo">
- -->
 </header>
 
 <section id="how-we-met" class="narrative">
@@ -85,12 +79,12 @@
     </p>
     <div class="recommendations" ng-controller="RecCtrl">
       <button ng-click="recommending = true" ng-hide="recommending">Recommend Something</button>
-      <form class="recommend" name="recForm" ng-show="recommending" 
-        firebase-form 
-        firebase-form-data="recommendation" 
+      <form class="recommend" name="recForm" ng-show="recommending"
+        firebase-form
+        firebase-form-data="recommendation"
         firebase-url="https://athreadofsomething.firebaseio.com/recommendations"
-        waiting-msg="Sending your response..." 
-        success-msg="Got your recommendation for '{{recommendation.recommendation}}' - thanks!" 
+        waiting-msg="Sending your response..."
+        success-msg="Got your recommendation for '{{recommendation.recommendation}}' - thanks!"
         error-msg="Shoot! Sorry. Something went wrong.  Please either reload the page and try again, or just email Jenn/Anand.">
 
         <h3>
@@ -127,17 +121,21 @@
     <h2>Eng Family Reception
       <span class="subhead">(New Jersey)</span>
     </h2>
-    <time datetime="2014-06-15T12:00-04:00">12:00 PM Sunday, June 15, 2014</time>
-    <div>
-      Forsgate Country Club
+
+    <div class="details">
+      <time datetime="2014-06-15T12:00-04:00">12:00 PM Sunday, June 15, 2014</time>
+      <div>
+        Forsgate Country Club
+      </div>
+      <div itemscope itemtype="schema.org/PostalAddress">
+        <span itemprop="streetAddress">375 Forsgate Drive</span>
+        <br/>
+        <span itemprop="addressLocality">Monroe Township, NJ</span>
+        <span itemprop="postalCode">08831</span>
+      </div>
     </div>
-    <div itemscope itemtype="schema.org/PostalAddress">
-      <span itemprop="streetAddress">375 Forsgate Drive</span>
-      <br/>
-      <span itemprop="addressLocality">Monroe Township, NJ</span>
-      <span itemprop="postalCode">08831</span>
-    </div>
-    <a class="button" href="https://www.google.com/maps/place/375+Forsgate+Dr/@40.3421939,-74.4599462,17z/data=!3m1!4b1!4m2!3m1!1s0x89c3dba912c50311:0xb233360061914f84"
+
+    <a class="button map" href="https://www.google.com/maps/place/375+Forsgate+Dr/@40.3421939,-74.4599462,17z/data=!3m1!4b1!4m2!3m1!1s0x89c3dba912c50311:0xb233360061914f84"
     title="Map">Map &#8594;</a>
 
     <div ng-show="showRsvp.nj">
@@ -178,24 +176,28 @@
     <h2>Thakker Family Reception
       <span class="subhead">(North Carolina)</span>
     </h2>
-    <time datetime="2014-07-20">The evening of Sunday, July 20, 2014</time>
-    <div>
-      The Faerrington House
+
+    <div class="details">
+      <time datetime="2014-07-20">The evening of Sunday, July 20, 2014</time>
+      <div>
+        The Faerrington House
+      </div>
+      <div itemscope itemtype="schema.org/PostalAddress">
+        <span itemprop="streetAddress">2000 Fearrington Village Center</span>
+        <br/>
+        <span itemprop="addressLocality">Pittsboro, NC</span>
+        <span itemprop="postalCode">27312</span>
+      </div>
     </div>
-    <div itemscope itemtype="schema.org/PostalAddress">
-      <span itemprop="streetAddress">2000 Fearrington Village Center</span>
-      <br/>
-      <span itemprop="addressLocality">Pittsboro, NC</span>
-      <span itemprop="postalCode">27312</span>
-    </div>
-    <a class="button" href="https://www.google.com/maps/place/2000+Fearrington+Village+Center/@35.800907,-79.079634,17z/data=!3m1!4b1!4m2!3m1!1s0x89acc0e445e84921:0xb0b6c1901c7203db"
+
+    <a class="button map" href="https://www.google.com/maps/place/2000+Fearrington+Village+Center/@35.800907,-79.079634,17z/data=!3m1!4b1!4m2!3m1!1s0x89acc0e445e84921:0xb0b6c1901c7203db"
     title="Map">Map &#8594;</a>
 
-    <div ng-show="showRsvp.nc">
+    <div class="rsvp-wrapper" ng-show="showRsvp.nc">
       <button class="rsvp-button" ng-click="responding = true" ng-hide="responding">RSVP to North Carolina Reception</button>
 
       <form class="rsvp" name="ncForm" ng-show="responding" firebase-form firebase-form-data="rsvp" firebase-url="https://athreadofsomething.firebaseio.com/rsvp/nc"
-      waiting-msg="Sending your response..." success-msg="Thanks--we've received your RSVP!" error-msg="Uh oh! Something went wrong.  Please either try again or contact Maggie and Ping Eng.">
+      waiting-msg="Sending your response..." success-msg="Thanks--we've received your RSVP!" error-msg="Uh oh! Something went wrong.  Please either try again or contact Dhiren and Kailas Thakker.">
 
         <h3>
           RSVP to North Carolina Reception
@@ -217,9 +219,26 @@
 
         <div class="form-question">
           <label for="number">Number of Guests
-            <input name="number" type="text" ng-model="rsvp.number">
+            <input name="number" type="number" ng-model="rsvp.number">
           </label>
         </div>
+
+        <div class="form-question">
+          <label>
+            Please indicate your entree choice(s).
+          </label>
+          <label>
+            <input name="menu.poultry" type="number" ng-model="rsvp.poultry" placeholder="1,2,etc.">Poultry
+          </label>
+          <label>
+            <input name="menu.fish" type="number" ng-model="rsvp.fish" placeholder="1,2,etc.">Fish
+          </label>
+          <label>
+            <input name="menu.vegetarian" type="number" ng-model="rsvp.vegetarian" placeholder="1,2,etc.">Vegetarian
+          </label>
+        </div>
+
+
         <button ng-disabled="ncForm.$invalid" ng-click="save()">Send RSVP Now&#8594;</button>
       </form>
     </div>
@@ -260,6 +279,9 @@
 </section>
 
 <footer>
-  Made with HTML5Boilerplate, Compass, jQuery, AngularJS, and &hearts;.
-  <br/>Whale icon by Claudio Gomboli from The Noun Project
+  <section class="copy">&copy; 2014 <a href="http://anandthakker.net">Anand Thakker</a> and Jennifer Eng</section>
+  <section>
+    Made with <a href="http://angularjs.org">AngularJS</a>, <a href="https://www.firebase.com/">Firebase</a>, and &hearts;.
+  </section>
+  <section class="attribution">Whale icon by <cite><a href="http://thenounproject.com/clagom/">Claudio Gomboli</a></cite> from The Noun Project</section>
 </footer>

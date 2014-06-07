@@ -263,12 +263,16 @@ input.ng-invalid.ng-dirty {
 */
 
 .rsvp-responses {
+  font-size: .75em;
   margin-top: 1em;
   width: 100%;
 
   th {
-    width: 33%;
+    width: 10%;
     text-align: left;
+    &:last-child {
+      width: 40%;
+    }
   }
 }
 

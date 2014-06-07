@@ -194,6 +194,31 @@
     title="Map">Map &#8594;</a>
 
     <div class="rsvp-wrapper" ng-show="showRsvp.nc">
+      <button class="rsvp-button" ng-click="respondingOOT = true" ng-hide="respondingOOT">
+        Information for Out of Town Guests</button>
+
+      <form class="rsvp" name="ncForm" ng-show="respondingOOT" firebase-form firebase-form-data="rsvp" firebase-url="https://athreadofsomething.firebaseio.com/rsvp/nc"
+      waiting-msg="Sending your response..." success-msg="Thanks--we've received your RSVP!" error-msg="Uh oh! Something went wrong.  Please either try again or contact Dhiren and Kailas Thakker.">
+
+        <h3>
+          Information for Out of Town Guests
+        </h3>
+
+        <p>
+          The Thakker family would be delighted to have you stay as their guests
+          in a Raleigh area hotel.  Unless you indicate differently, you'll have
+          a room for Saturday and Sunday night.
+        </p>
+        <p>
+          Also, when making travel plans, note that shuttles will be available to
+          and from the airport and the reception venue.
+        </p>
+
+
+      </form>
+    </div>
+
+    <div class="rsvp-wrapper" ng-show="showRsvp.nc">
       <button class="rsvp-button" ng-click="responding = true" ng-hide="responding">RSVP to North Carolina Reception</button>
 
       <form class="rsvp" name="ncForm" ng-show="responding" firebase-form firebase-form-data="rsvp" firebase-url="https://athreadofsomething.firebaseio.com/rsvp/nc"
@@ -236,6 +261,14 @@
           <label>
             <input name="menu.vegetarian" type="number" ng-model="rsvp.vegetarian" placeholder="1,2,etc.">Vegetarian
           </label>
+        </div>
+
+        <div class="form-question">
+          <label>
+            Comments
+            <input name="comments" type="text" ng-model="rsvp.comments">
+          </label>
+
         </div>
 
 

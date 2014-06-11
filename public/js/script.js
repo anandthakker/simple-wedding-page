@@ -29,6 +29,9 @@
     var ref;
     ref = new Firebase("https://athreadofsomething.firebaseio.com/rsvp/" + $routeParams.loc);
     $scope.responses = $firebase(ref);
+    $scope.responseFilter = function(response) {
+      return !$scope.hideNotAttending || response.attending;
+    };
     return $scope.loc = $routeParams.loc;
   }).controller("RecListCtrl", function($scope, $firebase) {
     var ref;

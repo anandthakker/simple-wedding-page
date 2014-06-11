@@ -751,24 +751,32 @@ input[type="number"] {
 .rsvp-responses th:last-child {
   width: 40%;
 }
+/* line 278, ../sass/partials/_page.scss */
+.rsvp-responses tr:nth-child(even) {
+  background-color: #eee;
+}
+/* line 282, ../sass/partials/_page.scss */
+.rsvp-responses td {
+  vertical-align: top;
+}
 
 /**
 * Recommendations List
 */
-/* line 283, ../sass/partials/_page.scss */
+/* line 292, ../sass/partials/_page.scss */
 .recommendation-responses {
   margin-top: 1em;
   width: 100%;
 }
-/* line 288, ../sass/partials/_page.scss */
+/* line 297, ../sass/partials/_page.scss */
 .recommendation-responses th.name {
   width: 20%;
 }
-/* line 291, ../sass/partials/_page.scss */
+/* line 300, ../sass/partials/_page.scss */
 .recommendation-responses th.recommendation {
   width: 40%;
 }
-/* line 294, ../sass/partials/_page.scss */
+/* line 303, ../sass/partials/_page.scss */
 .recommendation-responses th.comments {
   width: 40%;
 }
@@ -776,7 +784,7 @@ input[type="number"] {
 /***
 * Page layout stuff.
 */
-/* line 306, ../sass/partials/_page.scss */
+/* line 315, ../sass/partials/_page.scss */
 nav ul {
   margin: 0;
   padding: 0;
@@ -814,35 +822,35 @@ nav ul li:last-child {
 nav ul li.last {
   padding-right: 0;
 }
-/* line 321, ../sass/partials/_page.scss */
+/* line 330, ../sass/partials/_page.scss */
 nav li {
   border: none;
   width: 25%;
   padding: 0.25em 2px;
 }
-/* line 329, ../sass/partials/_page.scss */
+/* line 338, ../sass/partials/_page.scss */
 nav a {
   display: block;
   text-align: center;
 }
-/* line 334, ../sass/partials/_page.scss */
+/* line 343, ../sass/partials/_page.scss */
 nav .exit-only {
   display: none;
 }
 
-/* line 339, ../sass/partials/_page.scss */
+/* line 348, ../sass/partials/_page.scss */
 nav.stuck {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
 }
-/* line 344, ../sass/partials/_page.scss */
+/* line 353, ../sass/partials/_page.scss */
 nav.stuck ul {
   border-top: none;
 }
 
-/* line 349, ../sass/partials/_page.scss */
+/* line 358, ../sass/partials/_page.scss */
 #container {
   max-width: 34em;
   padding: 0 .5em;
@@ -850,7 +858,7 @@ nav.stuck ul {
 }
 
 @media (min-width: 30em) and (max-width: 74.9em) {
-  /* line 360, ../sass/partials/_page.scss */
+  /* line 369, ../sass/partials/_page.scss */
   #receptions > section {
     clear: both;
     *zoom: 1;
@@ -861,19 +869,19 @@ nav.stuck ul {
     display: table;
     clear: both;
   }
-  /* line 364, ../sass/partials/_page.scss */
+  /* line 373, ../sass/partials/_page.scss */
   #receptions .details {
     float: left;
   }
-  /* line 367, ../sass/partials/_page.scss */
+  /* line 376, ../sass/partials/_page.scss */
   #receptions a.map {
     float: right;
   }
-  /* line 370, ../sass/partials/_page.scss */
+  /* line 379, ../sass/partials/_page.scss */
   #receptions .rsvp-wrapper {
     clear: both;
   }
-  /* line 372, ../sass/partials/_page.scss */
+  /* line 381, ../sass/partials/_page.scss */
   #receptions .rsvp-wrapper:before {
     content: "\00a0";
     height: 0;
@@ -883,16 +891,16 @@ nav.stuck ul {
 }
 
 @media only screen and (min-width: 75em) {
-  /* line 384, ../sass/partials/_page.scss */
+  /* line 393, ../sass/partials/_page.scss */
   #container {
     max-width: 60rem;
   }
 
-  /* line 390, ../sass/partials/_page.scss */
+  /* line 399, ../sass/partials/_page.scss */
   .narrative p:first-child {
     margin-top: 0;
   }
-  /* line 394, ../sass/partials/_page.scss */
+  /* line 403, ../sass/partials/_page.scss */
   .narrative > div {
     -webkit-column-count: 2;
     -moz-column-count: 2;
@@ -901,33 +909,33 @@ nav.stuck ul {
     column-count: 2;
   }
 
-  /* line 401, ../sass/partials/_page.scss */
+  /* line 410, ../sass/partials/_page.scss */
   #receptions > section {
     width: 50%;
     float: left;
   }
-  /* line 406, ../sass/partials/_page.scss */
+  /* line 415, ../sass/partials/_page.scss */
   #receptions .subhead {
     display: block;
   }
 }
-/* line 413, ../sass/partials/_page.scss */
+/* line 422, ../sass/partials/_page.scss */
 #container > header {
   margin: 0 -.5em;
 }
 
 @media only screen and (min-width: 30em) {
-  /* line 419, ../sass/partials/_page.scss */
+  /* line 428, ../sass/partials/_page.scss */
   #container > header {
     margin: 0 0;
   }
 }
-/* line 428, ../sass/partials/_page.scss */
+/* line 437, ../sass/partials/_page.scss */
 #registry .cta {
   text-align: right;
 }
 
-/* line 432, ../sass/partials/_page.scss */
+/* line 441, ../sass/partials/_page.scss */
 #container > footer {
   border-top: 1px solid black;
   margin-top: 4rem;
@@ -936,12 +944,12 @@ nav.stuck ul {
 }
 
 @media (min-width: 30em) {
-  /* line 440, ../sass/partials/_page.scss */
+  /* line 449, ../sass/partials/_page.scss */
   .copy {
     float: left;
   }
 
-  /* line 443, ../sass/partials/_page.scss */
+  /* line 452, ../sass/partials/_page.scss */
   .attribution {
     float: left;
   }

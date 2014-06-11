@@ -31,6 +31,8 @@ angular.module("athreadofsomething",[
 ).controller("RsvpListCtrl", ($scope, $routeParams, $firebase) ->
   ref = new Firebase("https://athreadofsomething.firebaseio.com/rsvp/#{$routeParams.loc}")
   $scope.responses = $firebase(ref)
+  $scope.responseFilter = (response)->
+    !$scope.hideNotAttending || response.attending
   $scope.loc = $routeParams.loc
 
 ).controller("RecListCtrl", ($scope, $firebase)->

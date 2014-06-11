@@ -18,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-hide="hideNotAttending && !response.attending" ng-repeat="response in responses | orderByPriority">
+    <tr ng-repeat="response in responses | orderByPriority | filter:responseFilter">
       <td>{{response.name}}</td>
       <td>{{response.attending ? "Yes" : "No" }}</td>
       <td>{{response.number}}</td>

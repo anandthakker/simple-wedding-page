@@ -274,6 +274,15 @@ input.ng-invalid.ng-dirty {
       width: 40%;
     }
   }
+
+  tr:nth-child(even) {
+    background-color: #eee;
+  }
+
+  td {
+    vertical-align: top;
+  }
+
 }
 
 /**

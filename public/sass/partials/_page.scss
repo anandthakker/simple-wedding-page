@@ -192,13 +192,15 @@ input.ng-invalid.ng-dirty {
 
   @include box-shadow(#aaa 1px 1px 1px 1px);
 
+  width: 100%;
+
   @media (min-width: 30em) {
     width: 75%;
   }
 
   margin: 1em auto;
   @media (min-width: 75em) {
-    margin: 1em 0;
+    margin-top: 0;
   }
 }
 
@@ -225,15 +227,9 @@ input.ng-invalid.ng-dirty {
 
 .rsvp {
   @extend %rsvpcard;
-  @media (min-width: 30em) {
-    width: 75%;
-  }
-  margin: 1em auto;
-  @media (min-width: 75em) {
-    margin: 1em 0;
-  }
 
   font-family: $display-font-family;
+  font-size: .75em;
 
   h3 {
     font-size: 1rem;
@@ -242,9 +238,6 @@ input.ng-invalid.ng-dirty {
     text-align: center;
   }
 
-  form {
-    font-size: .75em;
-  }
 
   label {
     display: block;
@@ -363,19 +356,24 @@ nav.stuck {
 
 #receptions {
 
-
-
-  @media (min-width: 30em) and (max-width: 74.9em) {
-    &>section {
-      clear: both;
-      @include pie-clearfix;
+  .details {
+    time {
+      display: block;
+      margin-bottom: ($line-height * 1em);
     }
+  }
+
+  @media (min-width: 30em) {
+
     .details {
-      float: left;
+      width: 75%;
+      margin: 1em auto;
     }
-    a.map {
-      float: right;
+
+    .address, a.map {
+      display: inline-block;
     }
+
     .rsvp-wrapper {
       clear: both;
       &:before {
@@ -394,6 +392,21 @@ nav.stuck {
     max-width: 60rem;
   }
 
+  #receptions {
+    @include pie-clearfix;
+
+    .details {
+      width: 33%;
+      float: left;
+    }
+
+    .rsvp-wrapper {
+      float: right;
+      width: 66%;
+      clear: none;
+    }
+  }
+
   .narrative {
 
     p:first-child {
@@ -405,17 +418,7 @@ nav.stuck {
     }
   }
 
-  #receptions {
 
-    &>section {
-      width: 50%;
-      float: left;
-    }
-
-    .subhead {
-      display: block;
-    }
-  }
 }
 
 

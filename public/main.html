@@ -12,7 +12,7 @@
       </li>
       <li><a href="#onward" title="Onward">Onward</a>
       </li>
-      <li class="exit"><a href="#receptions" title="RSVP">RSVP</a>
+      <li class="exit"><a href="#receptions" title="RSVP">Reception/RSVP</a>
       </li>
       <li><a href="#registry" title="Registry">Registry</a>
       </li>
@@ -117,88 +117,34 @@
 
 <section id="receptions">
 
-  <section id="nj-reception" ng-controller="RsvpCtrl">
-    <h2>Eng Family Reception
-      <span class="subhead">(New Jersey)</span>
-    </h2>
-
-    <div class="details">
-      <time datetime="2014-06-15T12:00-04:00">12:00 PM Sunday, June 15, 2014</time>
-      <div>
-        Forsgate Country Club
-      </div>
-      <div itemscope itemtype="schema.org/PostalAddress">
-        <span itemprop="streetAddress">375 Forsgate Drive</span>
-        <br/>
-        <span itemprop="addressLocality">Monroe Township, NJ</span>
-        <span itemprop="postalCode">08831</span>
-      </div>
-    </div>
-
-    <a class="button map" href="https://www.google.com/maps/place/375+Forsgate+Dr/@40.3421939,-74.4599462,17z/data=!3m1!4b1!4m2!3m1!1s0x89c3dba912c50311:0xb233360061914f84"
-    title="Map">Map &#8594;</a>
-
-    <div ng-show="showRsvp.nj">
-      <button class="rsvp-button" ng-click="responding = true" ng-hide="responding">RSVP to New Jersey Reception</button>
-
-      <form class="rsvp" name="njForm" ng-show="responding" firebase-form firebase-form-data="rsvp" firebase-url="https://athreadofsomething.firebaseio.com/rsvp/nj"
-      waiting-msg="Sending your response..." success-msg="Thanks--we've received your RSVP!" error-msg="Uh oh! Something went wrong.  Please either try again or contact Maggie and Ping Eng.">
-
-        <h3>
-          RSVP to New Jersey Reception
-        </h3>
-        <div class="form-question">
-          <label>Name(s)
-            <input name="names" type="text" ng-model="rsvp.name" required autofocus>
-          </label>
-        </div>
-
-        <div class="form-question">
-          <label>
-            <input name="attending.true" type="radio" ng-model="rsvp.attending" ng-value="true">Will Attend
-          </label>
-          <label>
-            <input name="attending.false" type="radio" ng-model="rsvp.attending" ng-value="false">Will Not Attend
-          </label>
-        </div>
-
-        <div class="form-question">
-          <label for="number">Number of Guests
-            <input name="number" type="text" ng-model="rsvp.number">
-          </label>
-        </div>
-        <button ng-disabled="njForm.$invalid" ng-click="save()">Send RSVP Now&#8594;</button>
-      </form>
-    </div>
-  </section>
-
-  <section id="nc-reception" ng-controller="RsvpCtrl">
+<section id="nc-reception" ng-controller="RsvpCtrl">
     <h2>Thakker Family Reception
       <span class="subhead">(North Carolina)</span>
     </h2>
 
     <div class="details">
-      <time datetime="2014-07-20">The evening of Sunday, July 20, 2014</time>
-      <div>
+      <time datetime="2014-07-20 19:00-04:00">7:00pm on Sunday, July 20, 2014</time>
+      <div class="venue">
         The Faerrington House
       </div>
-      <div itemscope itemtype="schema.org/PostalAddress">
+      <div class="address" itemscope itemtype="schema.org/PostalAddress">
         <span itemprop="streetAddress">2000 Fearrington Village Center</span>
         <br/>
         <span itemprop="addressLocality">Pittsboro, NC</span>
         <span itemprop="postalCode">27312</span>
       </div>
+      <a class="button map" href="https://www.google.com/maps/place/2000+Fearrington+Village+Center/@35.800907,-79.079634,17z/data=!3m1!4b1!4m2!3m1!1s0x89acc0e445e84921:0xb0b6c1901c7203db"
+      title="Map">Map &#8594;</a>
     </div>
 
-    <a class="button map" href="https://www.google.com/maps/place/2000+Fearrington+Village+Center/@35.800907,-79.079634,17z/data=!3m1!4b1!4m2!3m1!1s0x89acc0e445e84921:0xb0b6c1901c7203db"
-    title="Map">Map &#8594;</a>
+
+
 
     <div class="rsvp-wrapper" ng-show="showRsvp.nc">
       <button class="rsvp-button" ng-click="respondingOOT = true" ng-hide="respondingOOT">
         Information for Out of Town Guests</button>
 
-      <form class="rsvp" name="ncForm" ng-show="respondingOOT" firebase-form firebase-form-data="rsvp" firebase-url="https://athreadofsomething.firebaseio.com/rsvp/nc"
-      waiting-msg="Sending your response..." success-msg="Thanks--we've received your RSVP!" error-msg="Uh oh! Something went wrong.  Please either try again or contact Dhiren and Kailas Thakker.">
+      <div class="rsvp" ng-show="respondingOOT">
 
         <h3>
           Information for Out of Town Guests
@@ -213,19 +159,17 @@
           Also, when making travel plans, note that shuttles will be available to
           and from the airport and the reception venue.
         </p>
-
-
-      </form>
+      </div>
     </div>
 
     <div class="rsvp-wrapper" ng-show="showRsvp.nc">
-      <button class="rsvp-button" ng-click="responding = true" ng-hide="responding">RSVP to North Carolina Reception</button>
+      <button class="rsvp-button" ng-click="responding = true" ng-hide="responding">RSVP</button>
 
       <form class="rsvp" name="ncForm" ng-show="responding" firebase-form firebase-form-data="rsvp" firebase-url="https://athreadofsomething.firebaseio.com/rsvp/nc"
       waiting-msg="Sending your response..." success-msg="Thanks--we've received your RSVP!" error-msg="Uh oh! Something went wrong.  Please either try again or contact Dhiren and Kailas Thakker.">
 
         <h3>
-          RSVP to North Carolina Reception
+          RSVP
         </h3>
         <div class="form-question">
           <label>Name(s)
